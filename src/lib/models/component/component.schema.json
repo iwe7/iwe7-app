@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "component_id": {
+      "type": "string",
+      "title": "组件编号"
+    },
+    "component_title": {
+      "type": "string",
+      "title": "组件名称"
+    },
+    "component_displayorder": {
+      "type": "string",
+      "title": "组件显示顺序"
+    },
+    "component_selector": {
+      "type": "string",
+      "title": "组件选择器"
+    },
+    "component_inputs": {
+      "type": "object",
+      "title": "组件输入"
+    },
+    "component_outputs": {
+      "type": "object",
+      "title": "组件输出"
+    },
+    "component_contents": {
+      "type": "object",
+      "title": "组件内容",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "entities": {
+          "type": "object",
+          "$ref": "#"
+        }
+      },
+      "required": [
+        "ids", "entities"
+      ]
+    }
+  }
+}

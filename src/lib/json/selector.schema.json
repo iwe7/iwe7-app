@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "selector_name": {
+      "type": "string",
+      "title": "选择器代号"
+    },
+    "selector_title": {
+      "type": "string",
+      "title": "选择器名"
+    },
+    "selector_description": {
+      "type": "string",
+      "title": "选择器简介"
+    }
+  },
+  "required": [
+    "selector_description", "selector_name", "selector_title"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "platform_id": {
+      "type": "string",
+      "title": "平台编号"
+    },
+    "platform_title": {
+      "type": "string",
+      "title": "平台标题"
+    },
+    "platform_logo": {
+      "type": "string",
+      "title": "平台logo"
+    },
+    "platform_description": {
+      "type": "string",
+      "title": "平台描述"
+    },
+    "platform_apps": {
+      "type": "object",
+      "title": "平台应用",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "entities": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "ids", "entities"
+      ]
+    }
+  },
+  "required": [
+    "platform_apps"
+  ]
+}

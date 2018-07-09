@@ -1,0 +1,30 @@
+{
+  "$schema": "../platform/platform.schema.json",
+  "platform_id": "example 01",
+  "platform_title": "案例-01",
+  "platform_logo": "",
+  "platform_description": "测试构架",
+  "platform_apps": [{
+    "app_id": "app 01",
+    "app_title": "第一个应用",
+    "app_pages": [{
+      "page_id": "page 01",
+      "page_title": "第一个页面",
+      "page_components": [{
+        "component_id": "component01",
+        "component_title": "文字组件",
+        "component_displayorder": "0",
+        "component_selector": "ui-text",
+        "component_inputs": {
+
+        },
+        "component_outputs": {
+
+        },
+        "component_contents": {
+
+        }
+      }]
+    }]
+  }]
+}

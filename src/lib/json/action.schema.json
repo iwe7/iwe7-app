@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "action_name": {
+      "type": "string",
+      "title": "操作代号"
+    },
+    "action_title": {
+      "type": "string",
+      "title": "操作名"
+    },
+    "action_description": {
+      "type": "string",
+      "title": "操作简介"
+    }
+  },
+  "required": [
+    "action_name", "action_title", "action_description"
+  ]
+}
