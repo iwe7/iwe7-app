@@ -1,9 +1,11 @@
 import { AppSelectorService } from './app.selector';
 import { Injectable } from '@angular/core';
 import { Actions } from '@ngrx/effects';
-import { AppActionService } from 'framework-store/app/app.action';
+import { AppActionService } from './app.action';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AppHookService {
     private map: Map<string, { selector: string, action: string, displayorder: number }[]> = new Map();
     constructor(

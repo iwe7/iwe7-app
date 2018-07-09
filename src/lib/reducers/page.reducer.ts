@@ -1,9 +1,8 @@
+import { createFeatureSelector } from '@ngrx/store';
 import { AppActions, AppActionTypes } from './../actions/index';
 import { ComponentModel } from '../models/component/component.model';
 import { PageModel } from '../models/page/page.model';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import * as componentReducer from './component.reducer';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 export interface State extends PageModel {
     // additional entities state properties
 }
@@ -12,9 +11,7 @@ export const adapter: EntityAdapter<ComponentModel> = createEntityAdapter<Compon
     selectId: (item: ComponentModel) => item.component_id
 });
 
-export const initialState: State = {
-    page_components_entity: adapter.getInitialState({})
-};
+export const initialState: State = {};
 
 export function reducer(
     state = initialState,
@@ -23,8 +20,7 @@ export function reducer(
     switch (action.type) {
         case AppActionTypes.SelectAppPageAction: {
             if (action.payload) {
-                const res = adapter.addAll(action.payload.page_components, state.page_components_entity);
-                state = { ...state, page_components_entity: res, ...action.payload };
+                state = { ...state, ...action.payload };
             }
             return state;
         }
@@ -34,9 +30,5 @@ export function reducer(
     }
 }
 
-export const {
-    selectIds,
-    selectEntities,
-    selectAll,
-    selectTotal,
-} = adapter.getSelectors();
+const slector = adapter.getSelectors();
+export const selectIwe7Page = createFeatureSelector('iwe7Page');

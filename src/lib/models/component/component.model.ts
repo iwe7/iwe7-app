@@ -1,4 +1,5 @@
 import { EntityState } from '@ngrx/entity';
+import { InputModel } from 'framework-store/app/models/input/input.model';
 export interface ComponentModel {
     // 组件编号
     component_id?: string;
@@ -9,7 +10,7 @@ export interface ComponentModel {
     // 对应组件选择器
     component_selector?: string;
     // 输入，一个selector,对应一个store.selector
-    component_inputs?: { [key: string]: any };
+    component_inputs?: InputModel;
     // 响应时间，响应一个action, 对应一个store.action
     component_outputs?: { [key: string]: string };
     // 方法

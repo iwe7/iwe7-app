@@ -1,10 +1,9 @@
-import { Iwe7ModelState } from './../models/iwe7-app.model';
 import { AppModel } from './../models/app/app.model';
 import { PlatformModel } from './../models/platform/platform.model';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import { AppActionTypes, AppActions } from '../actions/index';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 export interface State extends PlatformModel {
     // additional entities state properties
 }
@@ -32,9 +31,10 @@ export function reducer(
     }
 }
 
-export const {
-    selectIds,
-    selectEntities,
-    selectAll,
-    selectTotal,
-} = adapter.getSelectors();
+const slector = adapter.getSelectors();
+export const selectIwe7Platform = createFeatureSelector('iwe7Platform');
+
+export const selectIwe7PlatformAppEntity = createSelector(
+    selectIwe7Platform,
+    (state: State) => state.platform_apps_entity.entities
+);

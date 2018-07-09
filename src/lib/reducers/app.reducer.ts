@@ -1,9 +1,7 @@
-import { PageModel } from '../models/page/page.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { PageModel } from '../models/page/page.model';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { AppModel } from '../models/app/app.model';
-import * as pageReducer from './page.reducer';
-
 import { AppActionTypes, AppActions } from '../actions/index';
 
 export interface State extends AppModel {
@@ -36,9 +34,10 @@ export function reducer(
     }
 }
 
-export const {
-    selectIds,
-    selectEntities,
-    selectAll,
-    selectTotal,
-} = adapter.getSelectors();
+const slector = adapter.getSelectors();
+export const selectIwe7App = createFeatureSelector('iwe7App');
+
+export const selectIwe7AppPageEntity = createSelector(
+    selectIwe7App,
+    (state: State) => state.app_pages_entity.entities
+);

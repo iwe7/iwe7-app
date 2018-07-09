@@ -1,18 +1,30 @@
+import { ComponentModel } from 'framework-store';
 import { PageModel } from './../models/page/page.model';
 import { AppModel } from '../models/app/app.model';
 import { PlatformModel } from './../models/platform/platform.model';
+import { InputModel } from 'framework-store/app/models/input/input.model';
 export class AppActionsConst {
     LoadPlatformAction = 'LoadPlatformAction';
     LoadSuccessPlatformAction = 'LoadSuccessPlatformAction';
     LoadFailPlatformAction = 'LoadFailPlatformAction';
     SelectAppAction = 'SelectAppAction';
     SelectAppPageAction = 'SelectAppPageAction';
-    EmptyAction = 'EmptyAction';
+    Iwe7EmptyAction = 'Iwe7EmptyAction';
+    LoadComponentsAction = 'LoadComponentsAction';
+    AddInputAction = 'AddInputAction';
 }
 
 export const AppActionTypes = new AppActionsConst();
-export class EmptyAction {
-    type = AppActionTypes.EmptyAction;
+export class AddInputAction {
+    type = AppActionTypes.AddInputAction;
+    constructor(public payload: InputModel) { }
+}
+export class LoadComponentsAction {
+    type = AppActionTypes.LoadComponentsAction;
+    constructor(public payload: ComponentModel[]) { }
+}
+export class Iwe7EmptyAction {
+    type = AppActionTypes.Iwe7EmptyAction;
     constructor() { }
 }
 
@@ -45,4 +57,5 @@ export type AppActions =
     LoadPlatformAction
     | LoadSuccessPlatformAction
     | LoadFailPlatformAction
-    | SelectAppAction;
+    | SelectAppAction
+    | LoadComponentsAction;

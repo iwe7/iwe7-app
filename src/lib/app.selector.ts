@@ -1,6 +1,8 @@
 import { createSelector, MemoizedSelector } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AppSelectorService {
     private map: Map<string, () => MemoizedSelector<any, any>> = new Map();
     constructor() { }

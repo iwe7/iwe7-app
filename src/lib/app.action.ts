@@ -1,10 +1,12 @@
-import { EmptyAction } from './actions/index';
+import { Iwe7EmptyAction } from './actions/index';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Action, MemoizedSelector, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AppActionService {
     private map: Map<string, (payload: any) => Action> = new Map();
     constructor(
@@ -23,7 +25,7 @@ export class AppActionService {
             );
         } else {
             return Observable.create(obser => {
-                obser.next(new EmptyAction());
+                obser.next(new Iwe7EmptyAction());
                 obser.complete();
             });
         }
