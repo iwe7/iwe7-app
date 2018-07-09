@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 import { ComponentModel } from '../models/component/component.model';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { AppActions, AppActionTypes } from './../actions/index';
@@ -32,9 +32,9 @@ export function reducer(
 }
 
 const slector = adapter.getSelectors();
-export const selectIwe7Component = createFeatureSelector('iwe7Component');
+export const selectIwe7Component: MemoizedSelector<any, State> = createFeatureSelector('iwe7Component');
 
-export const selectAllIwe7Components = createSelector(
+export const selectAllIwe7Components: MemoizedSelector<State, ComponentModel[]> = createSelector(
     selectIwe7Component,
     slector.selectAll
 );

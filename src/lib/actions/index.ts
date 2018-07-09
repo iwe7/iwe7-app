@@ -1,8 +1,4 @@
-import { ComponentModel } from 'framework-store';
-import { PageModel } from './../models/page/page.model';
-import { AppModel } from '../models/app/app.model';
-import { PlatformModel } from './../models/platform/platform.model';
-import { InputModel } from 'framework-store/app/models/input/input.model';
+import { ComponentModel, InputModel, PageModel, AppModel, PlatformModel } from '../models/index';
 export class AppActionsConst {
     LoadPlatformAction = 'LoadPlatformAction';
     LoadSuccessPlatformAction = 'LoadSuccessPlatformAction';

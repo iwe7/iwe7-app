@@ -1,4 +1,4 @@
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, MemoizedSelector } from '@ngrx/store';
 import { AppActions, AppActionTypes } from './../actions/index';
 import { ComponentModel } from '../models/component/component.model';
 import { PageModel } from '../models/page/page.model';
@@ -31,4 +31,4 @@ export function reducer(
 }
 
 const slector = adapter.getSelectors();
-export const selectIwe7Page = createFeatureSelector('iwe7Page');
+export const selectIwe7Page: MemoizedSelector<any, State> = createFeatureSelector('iwe7Page');

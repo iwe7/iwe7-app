@@ -3,7 +3,8 @@ import { PlatformModel } from './../models/platform/platform.model';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import { AppActionTypes, AppActions } from '../actions/index';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
+import { Dictionary } from '@ngrx/entity/src/models';
 export interface State extends PlatformModel {
     // additional entities state properties
 }
@@ -32,9 +33,9 @@ export function reducer(
 }
 
 const slector = adapter.getSelectors();
-export const selectIwe7Platform = createFeatureSelector('iwe7Platform');
+export const selectIwe7Platform: MemoizedSelector<any, State> = createFeatureSelector('iwe7Platform');
 
-export const selectIwe7PlatformAppEntity = createSelector(
+export const selectIwe7PlatformAppEntity: MemoizedSelector<State, Dictionary<AppModel>> = createSelector(
     selectIwe7Platform,
     (state: State) => state.platform_apps_entity.entities
 );

@@ -1,5 +1,5 @@
 import { EntityState } from '@ngrx/entity';
-import { InputModel } from 'framework-store/app/models/input/input.model';
+import { InputModel } from '../input/input.model';
 export interface ComponentModel {
     // 组件编号
     component_id?: string;

@@ -1,7 +1,8 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { InputModel } from './../models/input/input.model';
-import { AppActions, AppActionTypes } from 'framework-store/app/actions';
+import { AppActions, AppActionTypes } from '../actions/index';
+import { Dictionary } from '@ngrx/entity/src/models';
 export interface State extends EntityState<InputModel> {
     // additional entities state properties
 }
@@ -31,9 +32,9 @@ export function reducer(
 }
 
 const slector = adapter.getSelectors();
-export const selectIwe7Component = createFeatureSelector('iwe7Inputs');
+export const selectIwe7Component: MemoizedSelector<any, State> = createFeatureSelector('iwe7Inputs');
 
-export const selectAllIwe7Inputs = createSelector(
+export const selectAllIwe7Inputs: MemoizedSelector<State, Dictionary<InputModel>> = createSelector(
     selectIwe7Component,
     slector.selectEntities
 );
