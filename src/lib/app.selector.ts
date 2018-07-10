@@ -1,20 +1,25 @@
-import { createSelector, MemoizedSelector } from '@ngrx/store';
+import { InputModel } from './models/input/input.model';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectEntitiesIwe7Inputs } from './reducers/inputs.reducer';
+export interface AppSelectorInterface {
+    id: string;
+    name: string;
+}
 @Injectable({
     providedIn: 'root'
 })
 export class AppSelectorService {
-    private map: Map<string, () => MemoizedSelector<any, any>> = new Map();
-    constructor() { }
-    // 注册选择器
-    set(name: string, selector: () => MemoizedSelector<any, any>): void {
-        this.map.set(name, selector);
+    constructor(
+        public store: Store<any>
+    ) {
     }
     // 获取选择器
-    get(name: string): MemoizedSelector<any, any> {
-        const selector = this.map.get(name);
-        if (selector) {
-            return selector();
-        }
+    get<T extends InputModel>(id: string): Observable<T> {
+        return this.store.select(selectEntitiesIwe7Inputs).pipe(
+            map(res => res[id] as T)
+        );
     }
 }

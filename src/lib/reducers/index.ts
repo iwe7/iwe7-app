@@ -13,3 +13,6 @@ export const iwe7Selector: {
     components: selectAllIwe7Components,
     inputs: selectAllIwe7Inputs
 };
+
+export { selectAllIwe7Components, selectEntitiesIwe7Components } from './component.reducer';
+export { selectAllIwe7Inputs, selectEntitiesIwe7Inputs } from './inputs.reducer';

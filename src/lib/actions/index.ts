@@ -1,4 +1,5 @@
 import { ComponentModel, InputModel, PageModel, AppModel, PlatformModel } from '../models/index';
+import { Update } from '@ngrx/entity';
 export class AppActionsConst {
     LoadPlatformAction = 'LoadPlatformAction';
     LoadSuccessPlatformAction = 'LoadSuccessPlatformAction';
@@ -8,12 +9,35 @@ export class AppActionsConst {
     Iwe7EmptyAction = 'Iwe7EmptyAction';
     LoadComponentsAction = 'LoadComponentsAction';
     AddInputAction = 'AddInputAction';
+    UpdateInputAction = 'UpdateInputAction';
+    SaveSettingAction = 'SaveSettingAction';
+    SaveSettingSuccessAction = 'SaveSettingSuccessAction';
+    SaveSettingFailAction = 'SaveSettingFailAction';
 }
 
 export const AppActionTypes = new AppActionsConst();
+export class SaveSettingAction {
+    type = AppActionTypes.SaveSettingAction;
+    constructor(public payload: any){}
+}
+
+export class SaveSettingSuccessAction {
+    type = AppActionTypes.SaveSettingSuccessAction;
+    constructor(public payload: any) { }
+}
+
+export class SaveSettingFailAction {
+    type = AppActionTypes.SaveSettingFailAction;
+    constructor(public payload: any) { }
+}
+
 export class AddInputAction {
     type = AppActionTypes.AddInputAction;
     constructor(public payload: InputModel) { }
+}
+export class UpdateInputAction {
+    type = AppActionTypes.UpdateInputAction;
+    constructor(public payload: Update<InputModel>) { }
 }
 export class LoadComponentsAction {
     type = AppActionTypes.LoadComponentsAction;

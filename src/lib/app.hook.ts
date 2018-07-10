@@ -7,7 +7,7 @@ import { AppActionService } from './app.action';
     providedIn: 'root'
 })
 export class AppHookService {
-    private map: Map<string, { selector: string, action: string, displayorder: number }[]> = new Map();
+    private map: Map<string, { id: string, name: string, action: string, displayorder: number }[]> = new Map();
     constructor(
         public actions: Actions,
         public action: AppActionService,
@@ -18,13 +18,18 @@ export class AppHookService {
             if (action) {
                 const newActions = action.sort((a, b) => a.displayorder - b.displayorder);
                 newActions.forEach(action => {
-                    this.action.get(action.action, this.selector.get(action.selector));
+                    this.selector.get(action.id).subscribe(res => {
+                        if (action.name) {
+                            res = res[action.name];
+                        }
+                        this.action.get(action.action, res);
+                    });
                 });
             }
         });
     }
     // 注册钩子
-    set(name: string, item: { selector: string, action: string, displayorder: number }[]): void {
+    set(name: string, item: { id: string, name: string, action: string, displayorder: number }[]): void {
         this.map.set(name, item);
     }
 }

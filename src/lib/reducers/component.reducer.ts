@@ -1,3 +1,4 @@
+import { Dictionary } from '@ngrx/entity/src/models';
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 import { ComponentModel } from '../models/component/component.model';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
@@ -37,4 +38,9 @@ export const selectIwe7Component: MemoizedSelector<any, State> = createFeatureSe
 export const selectAllIwe7Components: MemoizedSelector<State, ComponentModel[]> = createSelector(
     selectIwe7Component,
     slector.selectAll
+);
+
+export const selectEntitiesIwe7Components: MemoizedSelector<State, Dictionary<ComponentModel>> = createSelector(
+    selectIwe7Component,
+    slector.selectEntities
 );

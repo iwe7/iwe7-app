@@ -1,4 +1,4 @@
 export interface InputModel {
-    id: string;
+    id?: string;
     [key: string]: any;
 }

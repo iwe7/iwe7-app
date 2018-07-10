@@ -18,12 +18,11 @@ export function reducer(
     action: AppActions
 ): State {
     switch (action.type) {
+        case AppActionTypes.UpdateInputAction: {
+            return adapter.updateOne(action.payload, state);
+        }
         case AppActionTypes.AddInputAction: {
-            if (action.payload) {
-                state = adapter.addOne(action.payload, state);
-                return state;
-            }
-            return state;
+            return adapter.addOne(action.payload, state);
         }
         default: {
             return state;
@@ -34,7 +33,12 @@ export function reducer(
 const slector = adapter.getSelectors();
 export const selectIwe7Component: MemoizedSelector<any, State> = createFeatureSelector('iwe7Inputs');
 
-export const selectAllIwe7Inputs: MemoizedSelector<State, Dictionary<InputModel>> = createSelector(
+export const selectEntitiesIwe7Inputs: MemoizedSelector<State, Dictionary<InputModel>> = createSelector(
     selectIwe7Component,
     slector.selectEntities
+);
+
+export const selectAllIwe7Inputs: MemoizedSelector<State, InputModel[]> = createSelector(
+    selectIwe7Component,
+    slector.selectAll
 );

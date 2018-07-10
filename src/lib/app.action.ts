@@ -17,17 +17,12 @@ export class AppActionService {
         this.map.set(name, selector);
     }
     // 通过选择器赋值进行操作
-    get(name: string, payload: MemoizedSelector<any, any>): Observable<Action> {
+    get(name: string, payload: any): Action {
         const selector = this.map.get(name);
         if (selector) {
-            this.store.select(payload).pipe(
-                map(res => selector(res))
-            );
+            return this.map.get(name)(payload);
         } else {
-            return Observable.create(obser => {
-                obser.next(new Iwe7EmptyAction());
-                obser.complete();
-            });
+            return new Iwe7EmptyAction();
         }
     }
 }
